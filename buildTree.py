@@ -29,3 +29,10 @@ def print_tree(root: Optional[TreeNode]):
     left = print_tree(root.left)
     right = print_tree(root.right)
     return f'{root.val}, [{left}], [{right}]'
+
+if __name__ == "__main__":
+    sol = Solution()
+    preorder = [3,9,20,15,7]
+    inorder = [9,3,15,20,7]
+    print("Output is : ", print_tree(sol.buildTree(preorder, inorder)))
+
