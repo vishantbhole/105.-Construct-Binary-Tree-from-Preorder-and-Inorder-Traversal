@@ -14,3 +14,8 @@ class Solution:
 
         if not preorder or not inorder:
             return None
+        res = TreeNode(preorder[0])
+        mid = inorder.index(preorder[0])
+
+        res.left = self.buildTree(preorder[1:mid + 1], inorder[:mid])
+        res.right = self.buildTree(preorder[mid + 1:], inorder[mid + 1:])
