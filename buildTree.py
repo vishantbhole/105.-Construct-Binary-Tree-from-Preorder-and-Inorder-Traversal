@@ -19,3 +19,5 @@ class Solution:
 
         res.left = self.buildTree(preorder[1:mid + 1], inorder[:mid])
         res.right = self.buildTree(preorder[mid + 1:], inorder[mid + 1:])
+
+        return res
