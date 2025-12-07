@@ -36,3 +36,7 @@ if __name__ == "__main__":
     inorder = [9,3,15,20,7]
     print("Output is : ", print_tree(sol.buildTree(preorder, inorder)))
 
+    preorder1 = [-1]
+    inorder1 = [-1]
+    print("Output is : ", print_tree(sol.buildTree(preorder1, inorder1)))
+
