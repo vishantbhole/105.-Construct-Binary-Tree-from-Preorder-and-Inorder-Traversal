@@ -21,3 +21,11 @@ class Solution:
         res.right = self.buildTree(preorder[mid + 1:], inorder[mid + 1:])
 
         return res
+
+def print_tree(root: Optional[TreeNode]):
+    """Simple preorder print of the tree for visual checking."""
+    if not root:
+        return 'None'
+    left = print_tree(root.left)
+    right = print_tree(root.right)
+    return f'{root.val}, [{left}], [{right}]'
