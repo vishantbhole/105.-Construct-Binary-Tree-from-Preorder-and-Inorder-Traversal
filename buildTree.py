@@ -1,1 +1,42 @@
 
+# 105. Construct Binary Tree from Preorder and Inorder Traversal
+# Definition for a binary tree node.
+from typing import List, Optional
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+class Solution:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+
+        if not preorder or not inorder:
+            return None
+        res = TreeNode(preorder[0])
+        mid = inorder.index(preorder[0])
+
+        res.left = self.buildTree(preorder[1:mid + 1], inorder[:mid])
+        res.right = self.buildTree(preorder[mid + 1:], inorder[mid + 1:])
+
+        return res
+
+def print_tree(root: Optional[TreeNode]):
+    """Simple preorder print of the tree for visual checking."""
+    if not root:
+        return 'None'
+    left = print_tree(root.left)
+    right = print_tree(root.right)
+    return f'{root.val}, [{left}], [{right}]'
+
+if __name__ == "__main__":
+    sol = Solution()
+    preorder = [3,9,20,15,7]
+    inorder = [9,3,15,20,7]
+    print("Output is : ", print_tree(sol.buildTree(preorder, inorder)))
+
+    preorder1 = [-1]
+    inorder1 = [-1]
+    print("Output is : ", print_tree(sol.buildTree(preorder1, inorder1)))
+
