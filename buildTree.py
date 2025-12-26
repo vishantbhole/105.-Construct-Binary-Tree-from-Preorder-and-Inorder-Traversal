@@ -19,3 +19,24 @@ class Solution:
 
         res.left = self.buildTree(preorder[1:mid + 1], inorder[:mid])
         res.right = self.buildTree(preorder[mid + 1:], inorder[mid + 1:])
+
+        return res
+
+def print_tree(root: Optional[TreeNode]):
+    """Simple preorder print of the tree for visual checking."""
+    if not root:
+        return 'None'
+    left = print_tree(root.left)
+    right = print_tree(root.right)
+    return f'{root.val}, [{left}], [{right}]'
+
+if __name__ == "__main__":
+    sol = Solution()
+    preorder = [3,9,20,15,7]
+    inorder = [9,3,15,20,7]
+    print("Output is : ", print_tree(sol.buildTree(preorder, inorder)))
+
+    preorder1 = [-1]
+    inorder1 = [-1]
+    print("Output is : ", print_tree(sol.buildTree(preorder1, inorder1)))
+
